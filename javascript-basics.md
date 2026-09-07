@@ -119,3 +119,47 @@ console.log(counterA.getCount());  // 12
 - A closure is the combination of a function bundled together with references to its surrounding state (lexical environment).
 - Closures give inner functions access to an outer function's scope even after the outer function has returned.
 - Used for data encapsulation, function factories, and memoization.
+
+---
+
+### 📘 [Entry #13/31] JavaScript Promises, `async` / `await` & Fetch API
+> **Track:** `JAVASCRIPT-BASICS` | **Updated:** Sep 7, 2026, 10:15 PM
+
+#### 💡 Overview
+Writing clean asynchronous code using Promises, `async`/`await`, and `try...catch` blocks.
+
+#### 💻 Code & Implementation
+```javascript
+// Simulating an asynchronous database/network call
+function fetchUserData(userId) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            if (userId > 0) {
+                resolve({ id: userId, name: "Subhansu", role: "Developer" });
+            } else {
+                reject(new Error("Invalid User ID"));
+            }
+        }, 500);
+    });
+}
+
+// Modern async/await syntax:
+async function displayUser(id) {
+    try {
+        console.log("Fetching user...");
+        const user = await fetchUserData(id); // Pauses until Promise resolves
+        console.log(`User Loaded: ${user.name} (${user.role})`);
+    } catch (error) {
+        console.error("Failed to load user:", error.message);
+    } finally {
+        console.log("Request completed.");
+    }
+}
+
+displayUser(1);
+```
+
+#### 🎯 Key Concepts & Takeaways
+- A `Promise` represents a value that may be available now, in the future, or never (Pending, Fulfilled, Rejected).
+- `async` functions always return a Promise.
+- `await` simplifies asynchronous control flow, eliminating callback hell.
