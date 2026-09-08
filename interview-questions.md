@@ -471,3 +471,48 @@ Essential OS concepts: context switching, shared memory vs isolation, and deadlo
 #### 🎯 Key Concepts & Takeaways
 - Threads within the same process share heap memory, code segments, and open files, but have independent stacks and registers.
 - Deadlock can be prevented by breaking any one of the four Coffman conditions (e.g. enforcing a strict resource allocation order).
+
+---
+
+### 📘 [Entry #13/31] Top 4 Pillars of Object-Oriented Programming (OOPs)
+> **Track:** `INTERVIEW-QUESTIONS` | **Updated:** Sep 8, 2026, 09:12 PM
+
+#### 💡 Overview
+Clear explanations and real-world code examples of the 4 core OOP principles asked in technical interviews.
+
+#### 💻 Code & Implementation
+```java
+// 1. Encapsulation: Bundling data and methods into a class, hiding internal details
+class BankAccount {
+    private double balance; // Private data
+    public double getBalance() { return balance; } // Public getter
+    public void deposit(double amount) {
+        if (amount > 0) balance += amount;
+    }
+}
+
+// 2. Abstraction: Hiding implementation complexity and exposing essential interface
+abstract class Vehicle {
+    abstract void startEngine(); // Abstract method
+}
+
+// 3. Inheritance: Reusing code from parent class
+class Car extends Vehicle {
+    @Override
+    void startEngine() {
+        System.out.println("Car engine started with key ignition.");
+    }
+}
+
+// 4. Polymorphism: Compile-time (Overloading) and Runtime (Overriding)
+class Calculator {
+    int add(int a, int b) { return a + b; }
+    double add(double a, double b) { return a + b; } // Overloading
+}
+```
+
+#### 🎯 Key Concepts & Takeaways
+- **Encapsulation**: Protects internal state using access modifiers (`private`, `protected`, `public`).
+- **Abstraction**: Focuses on *what* the object does rather than *how* it does it.
+- **Inheritance**: IS-A relationship enabling code reuse.
+- **Polymorphism**: Ability of an object to take on many forms.
