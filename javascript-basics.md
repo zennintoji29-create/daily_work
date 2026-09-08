@@ -282,3 +282,40 @@ console.log(counterA.getCount());  // 12
 - A closure is the combination of a function bundled together with references to its surrounding state (lexical environment).
 - Closures give inner functions access to an outer function's scope even after the outer function has returned.
 - Used for data encapsulation, function factories, and memoization.
+
+---
+
+### 📘 [Entry #5/35] JavaScript Basics: `let`, `const`, `var` & Scope
+> **Track:** `JAVASCRIPT-BASICS` | **Updated:** Sep 8, 2026, 10:26 AM
+
+#### 💡 Overview
+Understanding modern JS variable declarations, block scope vs function scope, and hoisting.
+
+#### 💻 Code & Implementation
+```javascript
+// 1. const: Block-scoped, cannot be reassigned (Preferred default)
+const PI = 3.14159;
+// PI = 3.14; // TypeError: Assignment to constant variable
+
+// 2. let: Block-scoped, can be reassigned
+let score = 0;
+score += 10;
+
+// Block Scope Demonstration:
+{
+    let blockScoped = "I exist only inside this block {}";
+    const alsoBlockScoped = "Me too";
+    var functionScoped = "I leak outside normal blocks!";
+}
+
+// console.log(blockScoped); // ReferenceError: blockScoped is not defined
+console.log(functionScoped); // Prints: "I leak outside normal blocks!"
+
+// Best Practice Rule:
+// Always use 'const' by default; use 'let' only when value must change. Avoid 'var'.
+```
+
+#### 🎯 Key Concepts & Takeaways
+- `const` creates an immutable binding. Objects/arrays declared with `const` can still have their properties mutated.
+- `let` is limited to the `{}` block in which it was defined, preventing accidental global leaks.
+- `var` is hoisted and function-scoped, which often caused subtle bugs in older JavaScript codebases.
