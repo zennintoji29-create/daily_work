@@ -526,3 +526,44 @@ displayUser(1);
 - A `Promise` represents a value that may be available now, in the future, or never (Pending, Fulfilled, Rejected).
 - `async` functions always return a Promise.
 - `await` simplifies asynchronous control flow, eliminating callback hell.
+
+---
+
+### 📘 [Entry #30/35] JavaScript Closures & Lexical Scoping
+> **Track:** `JAVASCRIPT-BASICS` | **Updated:** Sep 8, 2026, 10:28 AM
+
+#### 💡 Overview
+How inner functions remember variables from outer scopes and create private variables.
+
+#### 💻 Code & Implementation
+```javascript
+// Factory function demonstrating Closure and Private State
+function createCounter(initialValue = 0) {
+    let count = initialValue; // Private variable, inaccessible from outside
+
+    return {
+        increment() {
+            count++;
+            return count;
+        },
+        decrement() {
+            count--;
+            return count;
+        },
+        getCount() {
+            return count;
+        }
+    };
+}
+
+const counterA = createCounter(10);
+console.log(counterA.increment()); // 11
+console.log(counterA.increment()); // 12
+console.log(counterA.getCount());  // 12
+// counterA.count is undefined (encapsulation!)
+```
+
+#### 🎯 Key Concepts & Takeaways
+- A closure is the combination of a function bundled together with references to its surrounding state (lexical environment).
+- Closures give inner functions access to an outer function's scope even after the outer function has returned.
+- Used for data encapsulation, function factories, and memoization.
