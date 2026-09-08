@@ -458,3 +458,42 @@ class Solution {
 - **Brute Force**: Check every pair with nested loops: O(N^2) Time.
 - **Optimal HashMap**: Calculate `complement = target - current`. If complement was previously seen in the map, return both indices immediately in O(1) lookup time.
 - **Complexity**: Time: O(N) single pass | Space: O(N) hash map storage.
+
+---
+
+### 📘 [Entry #4/31] LeetCode #206: Reverse Linked List (Iterative & Recursive)
+> **Track:** `LEETCODE-SOLUTIONS` | **Updated:** Sep 8, 2026, 09:12 PM
+
+#### 💡 Overview
+Reversing pointers in a singly linked list in-place using `prev`, `curr`, and `next` pointers.
+
+#### 💻 Code & Implementation
+```java
+// LeetCode #206: Reverse Linked List
+class ListNode {
+    int val;
+    ListNode next;
+    ListNode(int val) { this.val = val; }
+}
+
+class Solution {
+    public ListNode reverseList(ListNode head) {
+        ListNode prev = null;
+        ListNode curr = head;
+
+        while (curr != null) {
+            ListNode nextTemp = curr.next; // 1. Save next node
+            curr.next = prev;              // 2. Reverse pointer to point backwards
+            prev = curr;                   // 3. Advance prev pointer
+            curr = nextTemp;               // 4. Advance curr pointer
+        }
+
+        return prev; // prev is the new head of reversed list
+    }
+}
+```
+
+#### 🎯 Key Concepts & Takeaways
+- Always store `curr.next` before overwriting it; otherwise, the rest of the list is lost.
+- In-place pointer reversal operates without creating any new node allocations.
+- **Complexity**: Time: O(N) | Space: O(1) in-place.
