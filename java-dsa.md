@@ -846,3 +846,44 @@ public class TreeTraversals {
 - Inorder traversal of a Binary Search Tree (BST) visits nodes in ascending sorted order.
 - Level-Order traversal uses a FIFO Queue to visit nodes level by level.
 - Time Complexity: O(N) where N is total nodes; Space Complexity: O(H) recursion stack for DFS, O(W) queue width for BFS.
+
+---
+
+### 📘 [Entry #19/31] Java Collections Framework: ArrayList vs LinkedList vs HashMap
+> **Track:** `JAVA-DSA` | **Updated:** Sep 8, 2026, 09:13 PM
+
+#### 💡 Overview
+Choosing the right Java Collection (`ArrayList`, `LinkedList`, `HashMap`, `HashSet`, `PriorityQueue`) with Big-O trade-offs.
+
+#### 💻 Code & Implementation
+```java
+import java.util.*;
+
+public class CollectionsOverview {
+    public static void main(String[] args) {
+        // 1. ArrayList: Fast random access O(1), Slow middle insertion O(N)
+        List<String> list = new ArrayList<>();
+        list.add("Apple");
+        list.add("Banana");
+        System.out.println("ArrayList get(0): " + list.get(0));
+
+        // 2. HashMap: Fast O(1) average lookup, insert, and delete
+        Map<String, Integer> studentGrades = new HashMap<>();
+        studentGrades.put("Alice", 95);
+        studentGrades.put("Bob", 88);
+        System.out.println("Alice's grade: " + studentGrades.get("Alice"));
+
+        // 3. PriorityQueue (Min-Heap): O(log N) insertion and removal of minimum element
+        PriorityQueue<Integer> minHeap = new PriorityQueue<>();
+        minHeap.offer(40);
+        minHeap.offer(10);
+        minHeap.offer(25);
+        System.out.println("Smallest element (peek): " + minHeap.poll()); // 10
+    }
+}
+```
+
+#### 🎯 Key Concepts & Takeaways
+- `ArrayList` uses a dynamic array internally; contiguous memory provides high cache locality.
+- `HashMap` uses hashing and bucket arrays with linked-list / red-black tree collision resolution.
+- `PriorityQueue` implements a binary heap, essential for Dijkstra's and Top K problems.
