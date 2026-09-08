@@ -604,3 +604,42 @@ int main() {
 - A pointer is simply a variable that stores the memory address of another variable.
 - `&` (Address-Of): Gets the hexadecimal memory location where data lives in RAM.
 - `*` (Dereference): Follows the address to read or modify the actual stored data.
+
+---
+
+### 📘 [Entry #31/35] C Pointers Explained: Address-of (`&`) & Dereference (`*`)
+> **Track:** `C-PROGRAMMING` | **Updated:** Sep 8, 2026, 10:28 AM
+
+#### 💡 Overview
+What pointers are, how they store memory addresses, and how dereferencing works in C.
+
+#### 💻 Code & Implementation
+```c
+#include <stdio.h>
+
+int main() {
+    int value = 42;
+    
+    // int* declares a pointer to an integer
+    // &value gets the memory address of 'value'
+    int* ptr = &value;
+
+    printf("Value of variable: %d\n", value);
+    printf("Memory address of variable (&value): %p\n", (void*)&value);
+    printf("Pointer variable stores address (ptr): %p\n", (void*)ptr);
+    
+    // Dereferencing: *ptr accesses the value at the stored address
+    printf("Value fetched via pointer (*ptr): %d\n", *ptr);
+
+    // Modifying value through pointer
+    *ptr = 100;
+    printf("New value of variable after *ptr = 100: %d\n", value);
+
+    return 0;
+}
+```
+
+#### 🎯 Key Concepts & Takeaways
+- A pointer is simply a variable that stores the memory address of another variable.
+- `&` (Address-Of): Gets the hexadecimal memory location where data lives in RAM.
+- `*` (Dereference): Follows the address to read or modify the actual stored data.
