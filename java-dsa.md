@@ -559,3 +559,62 @@ public class CollectionsOverview {
 - `ArrayList` uses a dynamic array internally; contiguous memory provides high cache locality.
 - `HashMap` uses hashing and bucket arrays with linked-list / red-black tree collision resolution.
 - `PriorityQueue` implements a binary heap, essential for Dijkstra's and Top K problems.
+
+---
+
+### 📘 [Entry #14/35] Binary Tree Traversals in Java: Inorder, Preorder, Postorder & Level-Order
+> **Track:** `JAVA-DSA` | **Updated:** Sep 8, 2026, 10:27 AM
+
+#### 💡 Overview
+Tree traversal algorithms: Depth-First Search (DFS) and Breadth-First Search (BFS level-order).
+
+#### 💻 Code & Implementation
+```java
+import java.util.*;
+
+class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
+    TreeNode(int val) { this.val = val; }
+}
+
+public class TreeTraversals {
+    // 1. Inorder: Left -> Root -> Right (Yields sorted order in BST)
+    public static void inorder(TreeNode root) {
+        if (root == null) return;
+        inorder(root.left);
+        System.out.print(root.val + " ");
+        inorder(root.right);
+    }
+
+    // 2. Level-Order Traversal (BFS using Queue)
+    public static List<List<Integer>> levelOrder(TreeNode root) {
+        List<List<Integer>> result = new ArrayList<>();
+        if (root == null) return result;
+
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);
+
+        while (!queue.isEmpty()) {
+            int levelSize = queue.size();
+            List<Integer> currentLevel = new ArrayList<>();
+
+            for (int i = 0; i < levelSize; i++) {
+                TreeNode current = queue.poll();
+                currentLevel.add(current.val);
+
+                if (current.left != null) queue.offer(current.left);
+                if (current.right != null) queue.offer(current.right);
+            }
+            result.add(currentLevel);
+        }
+        return result;
+    }
+}
+```
+
+#### 🎯 Key Concepts & Takeaways
+- Inorder traversal of a Binary Search Tree (BST) visits nodes in ascending sorted order.
+- Level-Order traversal uses a FIFO Queue to visit nodes level by level.
+- Time Complexity: O(N) where N is total nodes; Space Complexity: O(H) recursion stack for DFS, O(W) queue width for BFS.
