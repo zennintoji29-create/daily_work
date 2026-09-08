@@ -374,3 +374,45 @@ class Solution {
 - Always store `curr.next` before overwriting it; otherwise, the rest of the list is lost.
 - In-place pointer reversal operates without creating any new node allocations.
 - **Complexity**: Time: O(N) | Space: O(1) in-place.
+
+---
+
+### 📘 [Entry #34/35] LeetCode #1: Two Sum (Optimal Hash Map Approach)
+> **Track:** `LEETCODE-SOLUTIONS` | **Updated:** Sep 8, 2026, 10:28 AM
+
+#### 💡 Overview
+Find two numbers in an array that add up to a target sum using single-pass Hash Map.
+
+#### 💻 Code & Implementation
+```java
+// LeetCode #1: Two Sum
+// Given an array of integers nums and an integer target, return indices of the two numbers.
+import java.util.HashMap;
+import java.util.Map;
+
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        // Map to store: number -> its index
+        Map<Integer, Integer> map = new HashMap<>();
+
+        for (int i = 0; i < nums.length; i++) {
+            int complement = target - nums[i];
+            
+            // If complement exists in map, we found the pair!
+            if (map.containsKey(complement)) {
+                return new int[] { map.get(complement), i };
+            }
+            
+            // Store current number and its index
+            map.put(nums[i], i);
+        }
+
+        return new int[] {}; // No solution found
+    }
+}
+```
+
+#### 🎯 Key Concepts & Takeaways
+- **Brute Force**: Check every pair with nested loops: O(N^2) Time.
+- **Optimal HashMap**: Calculate `complement = target - current`. If complement was previously seen in the map, return both indices immediately in O(1) lookup time.
+- **Complexity**: Time: O(N) single pass | Space: O(N) hash map storage.
