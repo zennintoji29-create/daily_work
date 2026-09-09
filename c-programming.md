@@ -1186,3 +1186,50 @@ int main() {
 - `scanf()` requires the memory address of the variable (`&variable`), not just the variable name.
 - The `&` operator is called the 'Address-Of' operator.
 - Always check input return values to avoid reading undefined uninitialized memory.
+
+---
+
+### 📘 [Entry #11/31] Dynamic Memory Allocation in C: `malloc()`, `calloc()`, and `free()`
+> **Track:** `C-PROGRAMMING` | **Updated:** Sep 9, 2026, 10:37 AM
+
+#### 💡 Overview
+Allocating heap memory dynamically at runtime and preventing memory leaks.
+
+#### 💻 Code & Implementation
+```c
+#include <stdio.h>
+#include <stdlib.h> // Required for malloc, calloc, free
+
+int main() {
+    int n = 5;
+    // malloc allocates n * sizeof(int) bytes on the Heap
+    int* arr = (int*)malloc(n * sizeof(int));
+
+    if (arr == NULL) {
+        printf("Memory allocation failed!\n");
+        return 1;
+    }
+
+    // Initialize array
+    for (int i = 0; i < n; i++) {
+        arr[i] = (i + 1) * 10;
+    }
+
+    printf("Dynamically allocated array: ");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+
+    // CRITICAL: Always free allocated heap memory when finished
+    free(arr);
+    arr = NULL; // Prevent dangling pointer
+
+    return 0;
+}
+```
+
+#### 🎯 Key Concepts & Takeaways
+- `malloc(size)` allocates uninitialized memory block on the Heap.
+- `calloc(count, size)` allocates and zeroes out all allocated bytes.
+- `free(ptr)` releases memory back to the OS. Failing to call `free` causes memory leaks.
