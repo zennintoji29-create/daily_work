@@ -974,3 +974,47 @@ console.log("Chained result:", sumOfDoubledEvens); // (2*2) + (4*2) + (6*2) = 4 
 - `map()` produces a 1-to-1 transformation without modifying the original array.
 - `filter()` keeps items where callback returns `true`.
 - `reduce()` is the most versatile array method, capable of transforming arrays into objects, maps, or single values.
+
+---
+
+### 📘 [Entry #26/31] JavaScript Promises, `async` / `await` & Fetch API
+> **Track:** `JAVASCRIPT-BASICS` | **Updated:** Sep 9, 2026, 10:38 AM
+
+#### 💡 Overview
+Writing clean asynchronous code using Promises, `async`/`await`, and `try...catch` blocks.
+
+#### 💻 Code & Implementation
+```javascript
+// Simulating an asynchronous database/network call
+function fetchUserData(userId) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            if (userId > 0) {
+                resolve({ id: userId, name: "Subhansu", role: "Developer" });
+            } else {
+                reject(new Error("Invalid User ID"));
+            }
+        }, 500);
+    });
+}
+
+// Modern async/await syntax:
+async function displayUser(id) {
+    try {
+        console.log("Fetching user...");
+        const user = await fetchUserData(id); // Pauses until Promise resolves
+        console.log(`User Loaded: ${user.name} (${user.role})`);
+    } catch (error) {
+        console.error("Failed to load user:", error.message);
+    } finally {
+        console.log("Request completed.");
+    }
+}
+
+displayUser(1);
+```
+
+#### 🎯 Key Concepts & Takeaways
+- A `Promise` represents a value that may be available now, in the future, or never (Pending, Fulfilled, Rejected).
+- `async` functions always return a Promise.
+- `await` simplifies asynchronous control flow, eliminating callback hell.
