@@ -1143,3 +1143,44 @@ console.log(functionScoped); // Prints: "I leak outside normal blocks!"
 - `const` creates an immutable binding. Objects/arrays declared with `const` can still have their properties mutated.
 - `let` is limited to the `{}` block in which it was defined, preventing accidental global leaks.
 - `var` is hoisted and function-scoped, which often caused subtle bugs in older JavaScript codebases.
+
+---
+
+### 📘 [Entry #5/30] JavaScript Closures & Lexical Scoping
+> **Track:** `JAVASCRIPT-BASICS` | **Updated:** Sep 10, 2026, 07:33 PM
+
+#### 💡 Overview
+How inner functions remember variables from outer scopes and create private variables.
+
+#### 💻 Code & Implementation
+```javascript
+// Factory function demonstrating Closure and Private State
+function createCounter(initialValue = 0) {
+    let count = initialValue; // Private variable, inaccessible from outside
+
+    return {
+        increment() {
+            count++;
+            return count;
+        },
+        decrement() {
+            count--;
+            return count;
+        },
+        getCount() {
+            return count;
+        }
+    };
+}
+
+const counterA = createCounter(10);
+console.log(counterA.increment()); // 11
+console.log(counterA.increment()); // 12
+console.log(counterA.getCount());  // 12
+// counterA.count is undefined (encapsulation!)
+```
+
+#### 🎯 Key Concepts & Takeaways
+- A closure is the combination of a function bundled together with references to its surrounding state (lexical environment).
+- Closures give inner functions access to an outer function's scope even after the outer function has returned.
+- Used for data encapsulation, function factories, and memoization.
