@@ -1074,3 +1074,35 @@ class Solution {
 - Always store `curr.next` before overwriting it; otherwise, the rest of the list is lost.
 - In-place pointer reversal operates without creating any new node allocations.
 - **Complexity**: Time: O(N) | Space: O(1) in-place.
+
+---
+
+### 📘 [Entry #25/30] LeetCode #53: Maximum Subarray (Kadane's Algorithm)
+> **Track:** `LEETCODE-SOLUTIONS` | **Updated:** Sep 10, 2026, 07:35 PM
+
+#### 💡 Overview
+Finding contiguous subarray with the largest sum using dynamic programming in linear time.
+
+#### 💻 Code & Implementation
+```java
+// LeetCode #53: Maximum Subarray
+class Solution {
+    public int maxSubArray(int[] nums) {
+        int currentMax = nums[0];
+        int globalMax = nums[0];
+
+        for (int i = 1; i < nums.length; i++) {
+            // Either extend the existing subarray or start a fresh subarray at nums[i]
+            currentMax = Math.max(nums[i], currentMax + nums[i]);
+            // Update the overall highest sum seen so far
+            globalMax = Math.max(globalMax, currentMax);
+        }
+
+        return globalMax;
+    }
+}
+```
+
+#### 🎯 Key Concepts & Takeaways
+- **Kadane's Intuition**: If the running sum becomes negative, it can never contribute positively to any future subarray, so we reset the subarray at the current element.
+- **Complexity**: Time: O(N) single pass | Space: O(1) constant memory.
