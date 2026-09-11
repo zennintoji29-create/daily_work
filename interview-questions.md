@@ -1155,3 +1155,48 @@ Eliminating data redundancy and anomaly bugs in relational schema design.
 #### 🎯 Key Concepts & Takeaways
 - Normalization prevents Insertion, Update, and Deletion anomalies in relational databases.
 - 3NF is the industry standard balance between avoiding redundancy and minimizing expensive JOIN operations.
+
+---
+
+### 📘 [Entry #13/30] Top 4 Pillars of Object-Oriented Programming (OOPs)
+> **Track:** `INTERVIEW-QUESTIONS` | **Updated:** Sep 11, 2026, 09:00 PM
+
+#### 💡 Overview
+Clear explanations and real-world code examples of the 4 core OOP principles asked in technical interviews.
+
+#### 💻 Code & Implementation
+```java
+// 1. Encapsulation: Bundling data and methods into a class, hiding internal details
+class BankAccount {
+    private double balance; // Private data
+    public double getBalance() { return balance; } // Public getter
+    public void deposit(double amount) {
+        if (amount > 0) balance += amount;
+    }
+}
+
+// 2. Abstraction: Hiding implementation complexity and exposing essential interface
+abstract class Vehicle {
+    abstract void startEngine(); // Abstract method
+}
+
+// 3. Inheritance: Reusing code from parent class
+class Car extends Vehicle {
+    @Override
+    void startEngine() {
+        System.out.println("Car engine started with key ignition.");
+    }
+}
+
+// 4. Polymorphism: Compile-time (Overloading) and Runtime (Overriding)
+class Calculator {
+    int add(int a, int b) { return a + b; }
+    double add(double a, double b) { return a + b; } // Overloading
+}
+```
+
+#### 🎯 Key Concepts & Takeaways
+- **Encapsulation**: Protects internal state using access modifiers (`private`, `protected`, `public`).
+- **Abstraction**: Focuses on *what* the object does rather than *how* it does it.
+- **Inheritance**: IS-A relationship enabling code reuse.
+- **Polymorphism**: Ability of an object to take on many forms.
