@@ -968,3 +968,32 @@ Essential OS concepts: context switching, shared memory vs isolation, and deadlo
 #### 🎯 Key Concepts & Takeaways
 - Threads within the same process share heap memory, code segments, and open files, but have independent stacks and registers.
 - Deadlock can be prevented by breaking any one of the four Coffman conditions (e.g. enforcing a strict resource allocation order).
+
+---
+
+### 📘 [Entry #5/27] Process vs Thread & CPU Scheduling Basics
+> **Track:** `INTERVIEW-QUESTIONS` | **Updated:** Sep 11, 2026, 07:57 PM
+
+#### 💡 Overview
+Essential OS concepts: context switching, shared memory vs isolation, and deadlock conditions.
+
+#### 💻 Code & Implementation
+```markdown
+### 📌 Process vs Thread Comparison
+| Feature | Process | Thread |
+|---|---|---|
+| **Definition** | A program in execution | A lightweight unit of execution within a process |
+| **Memory** | Isolated address space | Shares memory space with peer threads |
+| **Creation Cost** | High (Heavyweight) | Low (Lightweight) |
+| **Communication** | Inter-Process Communication (IPC, Sockets, Pipes) | Direct shared memory access |
+
+### 🔒 4 Necessary Conditions for Deadlock (Coffman Conditions)
+1. **Mutual Exclusion**: At least one resource must be held in non-shareable mode.
+2. **Hold and Wait**: A process holds a resource while waiting for additional resources.
+3. **No Preemption**: Resources cannot be forcibly taken; must be released voluntarily.
+4. **Circular Wait**: A closed chain of processes exists where each process holds a resource needed by the next.
+```
+
+#### 🎯 Key Concepts & Takeaways
+- Threads within the same process share heap memory, code segments, and open files, but have independent stacks and registers.
+- Deadlock can be prevented by breaking any one of the four Coffman conditions (e.g. enforcing a strict resource allocation order).
