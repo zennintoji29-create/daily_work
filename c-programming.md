@@ -2130,3 +2130,39 @@ int main() {
 - `scanf()` requires the memory address of the variable (`&variable`), not just the variable name.
 - The `&` operator is called the 'Address-Of' operator.
 - Always check input return values to avoid reading undefined uninitialized memory.
+
+---
+
+### 📘 [Entry #28/30] C Data Types, Variables & Format Specifiers
+> **Track:** `C-PROGRAMMING` | **Updated:** Sep 11, 2026, 09:01 PM
+
+#### 💡 Overview
+Basic primitive types: `int`, `float`, `double`, `char`, memory sizes, and format specifiers (`%d`, `%f`, `%c`, `%s`).
+
+#### 💻 Code & Implementation
+```c
+#include <stdio.h>
+
+int main() {
+    int age = 20;              // Integer: 4 bytes (e.g. 10, -50, 1000)
+    float gpa = 8.75f;         // Floating-point: 4 bytes (single precision)
+    double pi = 3.1415926535;  // Double precision float: 8 bytes
+    char grade = 'A';          // Single character: 1 byte (enclosed in single quotes)
+
+    printf("Age: %d\n", age);          // %d for integers
+    printf("GPA: %.2f\n", gpa);        // %.2f prints float with 2 decimal places
+    printf("Pi: %.6lf\n", pi);         // %lf for double
+    printf("Grade: %c\n", grade);      // %c for character
+
+    // sizeof operator returns size in bytes
+    printf("Size of int: %lu bytes\n", sizeof(int));
+    printf("Size of double: %lu bytes\n", sizeof(double));
+
+    return 0;
+}
+```
+
+#### 🎯 Key Concepts & Takeaways
+- In C, you must declare variable types before using them (statically typed language).
+- Format specifiers tell `printf` and `scanf` how to interpret binary data in memory.
+- `sizeof()` is a compile-time operator that returns the byte size of data types.
