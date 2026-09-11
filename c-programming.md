@@ -2032,3 +2032,31 @@ int main() {
 - In C, you must declare variable types before using them (statically typed language).
 - Format specifiers tell `printf` and `scanf` how to interpret binary data in memory.
 - `sizeof()` is a compile-time operator that returns the byte size of data types.
+
+---
+
+### 📘 [Entry #20/30] Introduction to C: Structure of a C Program & `main()`
+> **Track:** `C-PROGRAMMING` | **Updated:** Sep 11, 2026, 09:01 PM
+
+#### 💡 Overview
+Understanding C compilation, header files, the `main()` function entry point, and standard I/O.
+
+#### 💻 Code & Implementation
+```c
+#include <stdio.h> // Preprocessor directive to include Standard Input/Output library
+
+// Execution of every C program begins in the main() function
+int main() {
+    // printf prints formatted text to the terminal
+    // \n adds a newline character
+    printf("Hello, World! Welcome to C Programming.\n");
+
+    // return 0 signals to the Operating System that the program executed successfully
+    return 0;
+}
+```
+
+#### 🎯 Key Concepts & Takeaways
+- `#include <stdio.h>` is a preprocessor command that tells the compiler to include the standard input/output header file.
+- `int main()` is the entry point where the program starts execution. `int` means it returns an integer status code.
+- `printf()` sends text to the screen; the semicolon `;` ends every statement in C.
