@@ -1577,3 +1577,42 @@ class Solution {
 - Pushing the *matching closing character* makes the check a simple single equality comparison `stack.pop() != c`.
 - LIFO (Last In First Out) naturally matches nested matching structures like HTML tags and mathematical parentheses.
 - **Complexity**: Time: O(N) | Space: O(N) stack size.
+
+---
+
+### 📘 [Entry #19/30] LeetCode #206: Reverse Linked List (Iterative & Recursive)
+> **Track:** `LEETCODE-SOLUTIONS` | **Updated:** Sep 11, 2026, 09:01 PM
+
+#### 💡 Overview
+Reversing pointers in a singly linked list in-place using `prev`, `curr`, and `next` pointers.
+
+#### 💻 Code & Implementation
+```java
+// LeetCode #206: Reverse Linked List
+class ListNode {
+    int val;
+    ListNode next;
+    ListNode(int val) { this.val = val; }
+}
+
+class Solution {
+    public ListNode reverseList(ListNode head) {
+        ListNode prev = null;
+        ListNode curr = head;
+
+        while (curr != null) {
+            ListNode nextTemp = curr.next; // 1. Save next node
+            curr.next = prev;              // 2. Reverse pointer to point backwards
+            prev = curr;                   // 3. Advance prev pointer
+            curr = nextTemp;               // 4. Advance curr pointer
+        }
+
+        return prev; // prev is the new head of reversed list
+    }
+}
+```
+
+#### 🎯 Key Concepts & Takeaways
+- Always store `curr.next` before overwriting it; otherwise, the rest of the list is lost.
+- In-place pointer reversal operates without creating any new node allocations.
+- **Complexity**: Time: O(N) | Space: O(1) in-place.
