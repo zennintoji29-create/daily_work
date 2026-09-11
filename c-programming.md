@@ -1564,3 +1564,34 @@ int main() {
 - `#include <stdio.h>` is a preprocessor command that tells the compiler to include the standard input/output header file.
 - `int main()` is the entry point where the program starts execution. `int` means it returns an integer status code.
 - `printf()` sends text to the screen; the semicolon `;` ends every statement in C.
+
+---
+
+### 📘 [Entry #3/31] User Input in C: Using `scanf()` and Addressing Memory
+> **Track:** `C-PROGRAMMING` | **Updated:** Sep 11, 2026, 07:57 PM
+
+#### 💡 Overview
+Reading integers, floats, and characters from user input with the address-of operator `&`.
+
+#### 💻 Code & Implementation
+```c
+#include <stdio.h>
+
+int main() {
+    int num1, num2;
+
+    printf("Enter two integers separated by space: ");
+    // &num1 gives the memory address of num1 so scanf can write the value into it
+    scanf("%d %d", &num1, &num2);
+
+    int sum = num1 + num2;
+    printf("Sum of %d and %d is: %d\n", num1, num2, sum);
+
+    return 0;
+}
+```
+
+#### 🎯 Key Concepts & Takeaways
+- `scanf()` requires the memory address of the variable (`&variable`), not just the variable name.
+- The `&` operator is called the 'Address-Of' operator.
+- Always check input return values to avoid reading undefined uninitialized memory.
