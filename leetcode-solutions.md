@@ -1770,3 +1770,44 @@ class Solution {
 - Pushing the *matching closing character* makes the check a simple single equality comparison `stack.pop() != c`.
 - LIFO (Last In First Out) naturally matches nested matching structures like HTML tags and mathematical parentheses.
 - **Complexity**: Time: O(N) | Space: O(N) stack size.
+
+---
+
+### 📘 [Entry #20/28] LeetCode #20: Valid Parentheses (Stack Pattern)
+> **Track:** `LEETCODE-SOLUTIONS` | **Updated:** Sep 12, 2026, 08:36 PM
+
+#### 💡 Overview
+Validating balanced brackets `()`, `{}`, `[]` using a LIFO Stack data structure.
+
+#### 💻 Code & Implementation
+```java
+// LeetCode #20: Valid Parentheses
+import java.util.Stack;
+
+class Solution {
+    public boolean isValid(String s) {
+        Stack<Character> stack = new Stack<>();
+
+        for (char c : s.toCharArray()) {
+            // Push expected closing bracket onto stack
+            if (c == '(') stack.push(')');
+            else if (c == '{') stack.push('}');
+            else if (c == '[') stack.push(']');
+            else {
+                // If stack is empty or doesn't match current closing bracket
+                if (stack.isEmpty() || stack.pop() != c) {
+                    return false;
+                }
+            }
+        }
+
+        // Valid only if all opened brackets were closed
+        return stack.isEmpty();
+    }
+}
+```
+
+#### 🎯 Key Concepts & Takeaways
+- Pushing the *matching closing character* makes the check a simple single equality comparison `stack.pop() != c`.
+- LIFO (Last In First Out) naturally matches nested matching structures like HTML tags and mathematical parentheses.
+- **Complexity**: Time: O(N) | Space: O(N) stack size.
