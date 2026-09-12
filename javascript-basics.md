@@ -1944,3 +1944,47 @@ console.log(functionScoped); // Prints: "I leak outside normal blocks!"
 - `const` creates an immutable binding. Objects/arrays declared with `const` can still have their properties mutated.
 - `let` is limited to the `{}` block in which it was defined, preventing accidental global leaks.
 - `var` is hoisted and function-scoped, which often caused subtle bugs in older JavaScript codebases.
+
+---
+
+### 📘 [Entry #13/28] JavaScript Promises, `async` / `await` & Fetch API
+> **Track:** `JAVASCRIPT-BASICS` | **Updated:** Sep 12, 2026, 08:35 PM
+
+#### 💡 Overview
+Writing clean asynchronous code using Promises, `async`/`await`, and `try...catch` blocks.
+
+#### 💻 Code & Implementation
+```javascript
+// Simulating an asynchronous database/network call
+function fetchUserData(userId) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            if (userId > 0) {
+                resolve({ id: userId, name: "Subhansu", role: "Developer" });
+            } else {
+                reject(new Error("Invalid User ID"));
+            }
+        }, 500);
+    });
+}
+
+// Modern async/await syntax:
+async function displayUser(id) {
+    try {
+        console.log("Fetching user...");
+        const user = await fetchUserData(id); // Pauses until Promise resolves
+        console.log(`User Loaded: ${user.name} (${user.role})`);
+    } catch (error) {
+        console.error("Failed to load user:", error.message);
+    } finally {
+        console.log("Request completed.");
+    }
+}
+
+displayUser(1);
+```
+
+#### 🎯 Key Concepts & Takeaways
+- A `Promise` represents a value that may be available now, in the future, or never (Pending, Fulfilled, Rejected).
+- `async` functions always return a Promise.
+- `await` simplifies asynchronous control flow, eliminating callback hell.
